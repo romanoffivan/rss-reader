@@ -2,6 +2,7 @@
   "name": "project-lvl3-s234",
   "version": "1.0.0",
   "description": "",
+  "private": true,
   "scripts": {
     "webpack-serve": "webpack-serve --open",
     "start": "webpack --config webpack.config.js",
