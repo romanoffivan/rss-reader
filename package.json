@@ -1,10 +1,10 @@
 {
-  "name": "webpack-test",
+  "name": "project-lvl3-s234",
   "version": "1.0.0",
   "description": "",
   "scripts": {
     "webpack-serve": "webpack-serve --open",
-    "test": "jest",
+    "test": "eslint .",
     "babel-node": "babel-node",
     "gulp": "gulp",
     "eslint": "eslint",
@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/romanoffivan/webpack-test.git"
+    "url": "git+https://github.com/romanoffivan/project-lvl3-s234.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/romanoffivan/webpack-test/issues"
+    "url": "https://github.com/romanoffivan/project-lvl3-s234/issues"
   },
-  "homepage": "https://github.com/romanoffivan/webpack-test#readme",
+  "homepage": "https://github.com/romanoffivan/project-lvl3-s234#readme",
   "devDependencies": {
     "babel-eslint": "^8.2.2",
     "babel-jest": "^22.4.3",
@@ -32,11 +32,8 @@
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-babel": "^5.0.0",
-    "eslint-plugin-flowtype": "^2.46.1",
     "eslint-plugin-import": "^2.10.0",
     "eslint-plugin-jest": "^21.15.0",
-    "flow-bin": "^0.67",
-    "flow-typed": "^2.4.0",
     "html-webpack-plugin": "^3.2.0",
     "jest": "^22.4.3",
     "jest-cli": "^22.4.3",
