@@ -1,12 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const path = require('path');
 
 module.exports = {
-  entry: './src/index.js',
-  output: {
-    filename: 'index_bundle.js',
-    path: path.resolve(__dirname, 'dist'),
-  },
+  mode: process.env.NODE_ENV || 'development',
   module: {
     rules: [
       {
@@ -17,16 +12,20 @@ module.exports = {
         },
       },
       {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        test: /\.(scss)$/,
+        use: [{
+          loader: 'style-loader', // inject CSS to page
+        }, {
+          loader: 'css-loader', // translates CSS into CommonJS modules
+        }, {
+          loader: 'sass-loader', // compiles Sass to CSS
+        }],
       },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: './src/index.html',
-      inject: 'body',
+      template: 'template.html',
     }),
   ],
 };
