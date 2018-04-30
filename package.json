@@ -1,0 +1,51 @@
+{
+  "name": "webpack-test",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "webpack-serve": "webpack-serve --open",
+    "test": "jest",
+    "babel-node": "babel-node",
+    "gulp": "gulp",
+    "eslint": "eslint",
+    "webpack": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/romanoffivan/webpack-test.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/romanoffivan/webpack-test/issues"
+  },
+  "homepage": "https://github.com/romanoffivan/webpack-test#readme",
+  "devDependencies": {
+    "babel-eslint": "^8.2.2",
+    "babel-jest": "^22.4.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-flow": "^6.23.0",
+    "babel-preset-stage-0": "^6.24.1",
+    "css-loader": "^0.28.11",
+    "debug": "^3.1.0",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-babel": "^5.0.0",
+    "eslint-plugin-flowtype": "^2.46.1",
+    "eslint-plugin-import": "^2.10.0",
+    "eslint-plugin-jest": "^21.15.0",
+    "flow-bin": "^0.67",
+    "flow-typed": "^2.4.0",
+    "html-webpack-plugin": "^3.2.0",
+    "jest": "^22.4.3",
+    "jest-cli": "^22.4.3",
+    "style-loader": "^0.21.0",
+    "webpack": "^4.6.0",
+    "webpack-cli": "^2.0.15",
+    "webpack-serve": "^0.2.0"
+  },
+  "dependencies": {
+    "bootstrap": "^4.1.0"
+  }
+}
