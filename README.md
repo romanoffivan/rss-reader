@@ -1,4 +1,4 @@
-# project-lvl3
+# Rss Reader
 
 http://romanoffivan-rss.surge.sh/
 
