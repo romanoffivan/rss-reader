@@ -3,9 +3,13 @@ export default (rssList, data) => {
       <h2 class='title'>${data.title}</h2>
       <p class='description'>${data.description}</p>
       <ul class="list-unstyled list-group">
-      ${data.itemsArr.map(({ articleTitle, link }) => `
+      ${data.itemsArr.map(({ articleTitle, link, articleDesc }) => `
       <li class="list-group-item mb-2">
         <a href=${link}>${articleTitle}</a>
+        </br>
+      <button type="button" class="btn btn-primary btn-sm btn-outline-dark" data-whatever="${articleDesc}" data-toggle="modal" data-target="#descriptionModal">
+        Описание
+      </button>
       </li>`).join('')}
       </ul>
     </div>`);
