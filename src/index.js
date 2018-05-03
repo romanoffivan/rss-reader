@@ -1,3 +1,4 @@
+import 'bootstrap';
 import validator from 'validator';
 import axios from 'axios';
 import $ from 'jquery';
@@ -9,6 +10,7 @@ const form = document.getElementById('rss-form');
 const formInput = form.querySelector('.form-input');
 const formBtn = form.querySelector('.btn');
 const rssList = $('.rss-list');
+const modal = $('#descriptionModal');
 const cors = 'https://cors-anywhere.herokuapp.com/';
 
 const state = {
@@ -63,3 +65,9 @@ const handleSubmitForm = (event) => {
 
 formInput.addEventListener('input', handleInputValidate);
 form.addEventListener('submit', handleSubmitForm);
+
+modal.on('show.bs.modal', (event) => {
+  const button = $(event.relatedTarget);
+  const recipient = button.data('whatever');
+  modal.find('.modal-body').text(recipient);
+});
