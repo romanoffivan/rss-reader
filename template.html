@@ -12,9 +12,12 @@
   <div class="jumbotron">
     <h1 class="display-4">RSS Reader</h1>
     <hr class="my-4">
-    <form id="rss-form" class="form-inline my-2 my-lg-0">
-      <input class="form-input form-control mr-sm-2" type="text" placeholder="Please, write URL">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">add</button>
+    <form id="rss-form" class="form">
+      <div class="form-group">
+        <input class="form-input form-control w-50" type="text" placeholder="Please, write URL">
+        <div class="invalid-feedback"></div>
+      </div>
+      <button class="btn btn-primary btn-lg" type="submit">add feed</button>
     </form>
   </div>
   <div class="rss-list container"></div>
