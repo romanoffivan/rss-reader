@@ -4,7 +4,7 @@ import axios from 'axios';
 import $ from 'jquery';
 import './main.scss';
 import parse from './parse';
-import { getRenderedList, getUpdatedList } from './render';
+import { getRenderedList, getUpdatedRenderList } from './render';
 
 const form = document.getElementById('rss-form');
 const formInput = form.querySelector('.form-input');
@@ -16,7 +16,7 @@ const cors = 'https://cors-anywhere.herokuapp.com/';
 
 const state = {
   address: '',
-  addedFlow: [],
+  addedItems: [],
   formValid: true,
   flowId: 1,
 };
@@ -40,7 +40,7 @@ const handleInputValidate = () => {
 const handleSubmitForm = (event) => {
   event.preventDefault();
   formBtn.disabled = true;
-  if (state.addedFlow.find(data => data.url === state.address)) {
+  if (state.addedItems.find(data => data.url === state.address)) {
     state.formValid = false;
     formInput.classList.add('is-invalid');
     return;
@@ -56,8 +56,8 @@ const handleSubmitForm = (event) => {
         lastPubDate: itemsArr[0].pubDate,
         id: state.flowId,
       };
-      state.addedFlow = [addedRssData, ...state.addedFlow];
-      getRenderedList(rssList, state.addedFlow[0]);
+      state.addedItems = [addedRssData, ...state.addedItems];
+      getRenderedList(rssList, state.addedItems[0]);
       formBtn.disabled = false;
       formInput.value = '';
       state.flowId += 1;
@@ -71,28 +71,32 @@ const handleSubmitForm = (event) => {
     });
 };
 
-const updateFlow = ({ url, lastPubDate, id }) => {
+const addNewFeeds = ({ url, lastPubDate, id }) => {
   const lastPubTime = new Date(lastPubDate).getTime();
   axios.get(`${cors}${url}`)
     .then((response) => {
       const { itemsArr } = parse(response.data);
       const newItemsArr = itemsArr.filter(item => new Date(item.pubDate).getTime() > lastPubTime);
-      if (!newItemsArr.length) {
+      if (newItemsArr.length === 0) {
         return;
       }
-      getUpdatedList(id, newItemsArr);
-      const itemIndexTimeChange = state.addedFlow.length - id;
-      state.addedFlow[itemIndexTimeChange].lastPubDate = newItemsArr[0].pubDate;
+      getUpdatedRenderList(id, newItemsArr);
+      const itemIndexTimeChange = state.addedItems.length - id;
+      state.addedItems[itemIndexTimeChange].lastPubDate = newItemsArr[0].pubDate;
     })
     .catch((err) => {
+      formInput.classList.add('is-invalid');
+      errorMessage.textContent = 'update error';
       throw err;
     });
 };
 
-const updateNewsOnFlow = () => {
-  Promise.all(state.addedFlow.map(updateFlow))
-    .then(() => setTimeout(updateNewsOnFlow, 5000));
+const updateFeeds = () => {
+  Promise.all(state.addedItems.map(addNewFeeds))
+    .then(() => setTimeout(updateFeeds, 5000))
+    .catch(() => setTimeout(updateFeeds, 10000));
 };
+updateFeeds();
 
 formInput.addEventListener('input', handleInputValidate);
 form.addEventListener('submit', handleSubmitForm);
@@ -102,5 +106,3 @@ modal.on('show.bs.modal', (event) => {
   const recipient = button.data('whatever');
   modal.find('.modal-body').text(recipient);
 });
-
-updateNewsOnFlow();

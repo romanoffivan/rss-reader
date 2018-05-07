@@ -17,7 +17,7 @@ export const getRenderedList = (rssList, data) => {
     </div>`);
 };
 
-export const getUpdatedList = (id, arr) => {
+export const getUpdatedRenderList = (id, arr) => {
   $(`#${id}`).find('ul').prepend(`${arr.map(({ articleTitle, link, articleDesc }) => `
       <li class="list-group-item mb-2">
         <a href=${link}>${articleTitle}</a>
