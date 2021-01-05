@@ -45,7 +45,7 @@
     "webpack-serve": "^0.2.0"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "bootstrap": "^4.1.0",
     "jquery": "^3.5.0",
     "popper.js": "^1.14.3",
